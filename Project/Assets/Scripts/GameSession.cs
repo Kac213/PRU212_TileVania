@@ -15,7 +15,7 @@ public class GameSession : MonoBehaviour
     
     void Awake()
     {
-        int numGameSessions = FindObjectsOfType<GameSession>().Length;
+        int numGameSessions = FindObjectsByType<GameSession>(FindObjectsSortMode.None).Length;
         if (numGameSessions > 1)
         {
             Destroy(gameObject);
@@ -60,7 +60,7 @@ public class GameSession : MonoBehaviour
 
     void ResetGameSession()
     {
-        FindObjectOfType<ScenePersist>().ResetScenePersist();
+        FindFirstObjectByType<ScenePersist>().ResetScenePersist();
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
